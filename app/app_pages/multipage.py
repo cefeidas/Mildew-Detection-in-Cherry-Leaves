@@ -9,6 +9,8 @@ class MultiPage:
     def __init__(self, app_name) -> None:
         self.pages = []
         self.app_name = app_name
+        if "current_page" not in st.session_state:
+            st.session_state.current_page = 0
 
     def add_page(self, title, func) -> None:
         """
@@ -18,10 +20,22 @@ class MultiPage:
         """
         self.pages.append({"title": title, "function": func})
 
+
     def run(self):
         st.title(self.app_name)
-        page = st.sidebar.radio('Navigation', self.pages,
-                                format_func=lambda page: page['title'])
+        page_index = st.sidebar.radio(
+            'Navigation', range(len(self.pages)),
+            format_func=lambda index: self.pages[index]['title']
+    )
+        st.session_state.current_page = page_index
+        self.pages[st.session_state.current_page]['function'](self)
 
-        # Running the selected page function
-        page['function']()
+    def next_page(self):
+        if st.session_state.current_page < len(self.pages) - 1:
+            st.session_state.current_page += 1
+            st.experimental_rerun()
+
+    def previous_page(self):
+        if st.session_state.current_page > 0:
+            st.session_state.current_page -= 1
+            st.experimental_rerun()
