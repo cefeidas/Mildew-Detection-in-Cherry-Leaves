@@ -29,13 +29,3 @@ class MultiPage:
     )
         st.session_state.current_page = page_index
         self.pages[st.session_state.current_page]['function'](self)
-
-    def next_page(self):
-        if st.session_state.current_page < len(self.pages) - 1:
-            st.session_state.current_page += 1
-            st.experimental_rerun()
-
-    def previous_page(self):
-        if st.session_state.current_page > 0:
-            st.session_state.current_page -= 1
-            st.experimental_rerun()
