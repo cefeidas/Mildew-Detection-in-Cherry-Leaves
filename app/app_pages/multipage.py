@@ -1,18 +1,20 @@
 import streamlit as st
+from app_pages import home_page
+from app_pages import project_introduction
+from app_pages import model_interaction
+from app_pages import results_conclusions
+
 
 
 class MultiPage:
     """
-    Class to generate multiple Streamlit pages using an object oriented approach.
+    Class for multi-page Streamlit apps using object-oriented design.
     """
 
     def __init__(self, app_name) -> None:
         self.pages = []
         self.app_name = app_name
 
-        st.set_page_config(
-            page_title=self.app_name,
-            page_icon="🌿")  # Custom icon for your app, related to cherry leaves
 
     def add_page(self, title, func) -> None:
         """
