@@ -8,12 +8,16 @@ def display_page(app):
 
     st.info(
         f"**General Information**\n"
-        f"* Mildew in cherry leaves is a common fungal infection that affects the health and yield of cherry plantations.\n"
-        f"* Early detection and treatment are crucial to prevent the spread of the disease and ensure a quality harvest.\n"
-        f"* This app utilizes advanced image processing techniques to identify mildew presence in cherry leaves.\n\n"
+        f"* Mildew in cherry leaves is a common fungal infection.\n"
+        f"* It affects health and yield of cherry plantations.\n"
+        f"* Early detection and treatment are crucial.\n"
+        f"* They prevent disease spread and ensure quality harvest.\n"
         f"**Project Dataset**\n"
-        f"* The dataset includes high-resolution images of cherry leaves, categorised into healthy and mildew-infected leaves.\n"
-        f"* Each image has been meticulously annotated to aid in the accurate training of our detection models.")
+        f"* This app uses image processing for mildew identification.\n"
+        f"* It identifies mildew presence in cherry leaves.\n\n"
+        f"* Dataset includes high-resolution images of cherry leaves.\n"
+        f"* Images are categorised into healthy and mildew-infected leaves.\n"
+        f"* Images have been annotated for accurate model training.")
 
     st.write(
         f"* For more information and to understand the dataset better, "
@@ -21,8 +25,8 @@ def display_page(app):
 
     st.success(
         f"The project focuses on 2 primary objectives:\n"
-        f"* 1 - Conduct a study to visually differentiate between healthy and mildew-infected cherry leaves.\n"
-        f"* 2 - Develop an efficient machine learning model to accurately predict mildew presence in cherry leaves.")
+        f"* 1 - Study to differentiate healthy and infected leaves.\n"
+        f"* 2 - Develop a model to predict mildew presence.")
 
     # Insert an interactive or static image related to the project
     st.image("app/src/leaves.png",

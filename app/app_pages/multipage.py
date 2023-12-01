@@ -20,12 +20,10 @@ class MultiPage:
         """
         self.pages.append({"title": title, "function": func})
 
-
     def run(self):
         st.title(self.app_name)
         page_index = st.sidebar.radio(
             'Navigation', range(len(self.pages)),
-            format_func=lambda index: self.pages[index]['title']
-    )
+            format_func=lambda index: self.pages[index]['title'])
         st.session_state.current_page = page_index
         self.pages[st.session_state.current_page]['function'](self)
