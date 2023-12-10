@@ -9,7 +9,7 @@ def display_page(app):
     if st.button('Evaluate Model'):
         model = load_model('cherry_leaf_cnn_model.h5')
         evaluation_score = model.evaluate(test_generator)
-        accuracy = evaluation_score[1]como en
+        accuracy = evaluation_score[1]
         st.write(f"Model Accuracy: {accuracy:.2f}")
 
     # Information about the model evaluation
