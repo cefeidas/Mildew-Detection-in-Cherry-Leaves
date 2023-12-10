@@ -3,7 +3,7 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
 # Definir la ruta al directorio de test
-test_dir = 'ruta/al/directorio/de/test'
+test_dir = 'inputs/mildew_dataset/cherry-leaves/test'
 
 # Parámetros de la imagen
 img_width, img_height = 50, 50
