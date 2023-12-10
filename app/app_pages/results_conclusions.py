@@ -1,6 +1,8 @@
 import streamlit as st
 from tensorflow.keras.models import load_model
 
+test_generator = test_datagen.flow_from_directory( test_dir, target_size=(img_width, img_height), batch_size=batch_size, class_mode='binary')
+
 
 def display_page(app):
     st.title("Results and Conclusions")
