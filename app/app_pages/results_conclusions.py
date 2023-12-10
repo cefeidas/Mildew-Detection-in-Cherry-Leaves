@@ -1,4 +1,5 @@
 import streamlit as st
+from tensorflow.keras.models import load_model
 
 
 def display_page(app):
