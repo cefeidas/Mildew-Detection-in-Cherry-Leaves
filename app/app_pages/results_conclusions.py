@@ -1,19 +1,36 @@
 import streamlit as st
 from tensorflow.keras.models import load_model
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
-test_generator = test_datagen.flow_from_directory( test_dir, target_size=(img_width, img_height), batch_size=batch_size, class_mode='binary')
+# Definir la ruta al directorio de test
+test_dir = 'ruta/al/directorio/de/test'
 
+# Parámetros de la imagen
+img_width, img_height = 50, 50
+batch_size = 20
+
+# Crear un ImageDataGenerator para normalizar las imágenes
+test_datagen = ImageDataGenerator(rescale=1./255)
+
+# Crear el test_generator
+test_generator = test_datagen.flow_from_directory(
+    test_dir,
+    target_size=(img_width, img_height),
+    batch_size=batch_size,
+    class_mode='binary'
+)
 
 def display_page(app):
     st.title("Results and Conclusions")
     st.write("Explore outcomes and insights of the mildew project.")
 
-    # Button to evaluate the model
+    # Botón para evaluar el modelo
     if st.button('Evaluate Model'):
         model = load_model('cherry_leaf_cnn_model.h5')
         evaluation_score = model.evaluate(test_generator)
         accuracy = evaluation_score[1]
         st.write(f"Model Accuracy: {accuracy:.2f}")
+
 
     # Information about the model evaluation
     st.info(
