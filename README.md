@@ -1,5 +1,18 @@
 # Mildew Detection in Cherry Leaves
 
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Prerequisites](#prerequisites)
+- [Installation and Setup](#installation-and-setup)
+- [Design and User Stories](#design-and-user-stories)
+- [Data Analysis and Model Development](#data-analysis-and-model-development)
+- [Testing](#testing)
+- [Credits](#credits)
+- [License](#license)
+- [Conclusion](#conclusion)
+
+
 ## Introduction
 
 This project focuses on developing a machine learning model to distinguish healthy cherry leaves from those affected by powdery mildew. The goal is to create a system that quickly and accurately identifies affected leaves, aiding in early disease management and prevention.
@@ -16,6 +29,15 @@ To effectively use the Mildew Detection App and its dashboard functionality, the
 - **Internet Connection**: Essential for accessing the app and its features.
 - **Image Formats**: Ability to upload images in JPEG, PNG, or other common formats for analysis.
 
+#### Accessing the Mildew Detection Dashboard
+
+The interactive Mildew Detection Dashboard is hosted on Heroku, providing an easy and direct way to interact with our model. You can access the dashboard using the following link:
+
+[Heroku Dashboard Link](https://your-heroku-app-link.com)
+
+No installation or setup is required to use the dashboard. It's designed to be user-friendly, allowing you to upload cherry leaf images and get instant predictions on their health status.
+
+
 ### Jupyter Notebooks
 
 The Jupyter Notebooks are crucial for the technical aspects of this project, including data processing and model training. Ensure you have the following setup:
@@ -24,6 +46,19 @@ The Jupyter Notebooks are crucial for the technical aspects of this project, inc
 - **Jupyter Notebook**: Installation instructions available on [Jupyter.org](https://jupyter.org/install).
 - **Python Libraries**: Necessary libraries such as TensorFlow, NumPy, Pandas, Matplotlib, Seaborn, and Keras, can be installed from the `requirements.txt` file.
 - **Dataset**: Access to the cherry leaves dataset is required for model training and evaluation.
+
+#### Launching Jupyter Notebooks
+
+Once Jupyter Notebook is installed, you can launch it to interact with the project's detailed analysis and model development notebooks. Follow these simple steps:
+
+1. Open your command line interface (CLI).
+2. Navigate to the directory where your Jupyter Notebooks are located.
+3. Run the following command to start Jupyter Notebook:
+  jupyter notebook --NotebookApp.token='' --NotebookApp.password=''
+4. This command will open Jupyter Notebook in your default web browser.
+5. From the Jupyter interface, you can open and run individual notebooks to explore the project's analysis and models.
+
+Note: The `--NotebookApp.token='' --NotebookApp.password=''` flags are optional and are used to disable the token and password for ease of access. It's recommended to use these flags only in a secure and trusted environment.
 
 ### Python Library Versions
 
@@ -258,6 +293,7 @@ This project utilizes a range of libraries, each contributing to different aspec
 - **Seaborn (0.11.0)**: A Python visualization library based on Matplotlib for statistical graphics. [Seaborn Documentation](https://seaborn.pydata.org/).
 - **Plotly (4.12.0)**: Python graphing library for interactive, publication-quality graphs. [Plotly Documentation](https://plotly.com/python/).
 - **Streamlit (0.85.0)**: Facilitates the creation of data apps with minimal UI. [Streamlit Documentation](https://docs.streamlit.io/).
+- **Kaggle**: For providing the dataset used in this project. [Kaggle Website](https://www.kaggle.com/).
 
 ## License
 
