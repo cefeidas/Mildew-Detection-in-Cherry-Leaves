@@ -1,12 +1,12 @@
 # numpy is required for numerical operations
-numpy==1.19.2
+numpy>=1.19.2
 
 # TensorFlow Lite for model inference
 # TensorFlow Lite is lighter than the full TensorFlow package
 tensorflow==2.6.0
 
 # Required for the web app
-streamlit>=0.85.0
+streamlit==0.85.0
 
 # Image processing
 Pillow==8.0.0
