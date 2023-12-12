@@ -1,6 +1,4 @@
 import streamlit as st
-from tensorflow.keras.models import load_model
-from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
 def display_page(app):
     st.title("Results and Conclusions")
