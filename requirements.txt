@@ -1,5 +1,5 @@
 # numpy is required for numerical operations
-numpy>=1.19.2
+numpy==1.19.2
 
 # TensorFlow Lite for model inference
 # TensorFlow Lite is lighter than the full TensorFlow package
