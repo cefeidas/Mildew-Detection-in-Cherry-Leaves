@@ -5,6 +5,7 @@ numpy>=1.19.2
 pandas>=1.1.2
 
 # Required for the machine learning model
+# Consider using TensorFlow Lite if only used for inference
 tensorflow>=2.6.0
 keras>=2.6.0
 
@@ -14,11 +15,9 @@ streamlit>=0.85.0
 # Image processing
 Pillow>=8.0.0
 
-# protobuf is a dependency of tensorflow
-protobuf>=3.20
-
-# altair is used for charting
-altair>=4.0,<5
+# Commented out as they are not directly required for the app to function
+# altair>=4.0,<5
+# protobuf>=3.20
 
 # Commented out as they are used primarily in Jupyter Notebooks for visualization and are not necessary for the app's functionality
 # matplotlib>=3.3.1
@@ -27,4 +26,5 @@ altair>=4.0,<5
 
 # Commented out as it's a machine learning utility library, not directly required for the app to function
 # scikit-learn>=0.24.2
+
 
