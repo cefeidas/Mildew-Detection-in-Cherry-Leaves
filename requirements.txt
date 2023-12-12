@@ -2,12 +2,12 @@
 numpy>=1.19.2
 
 # pandas is required for data manipulation
+# Consider removing if not used directly in the app
 pandas>=1.1.2
 
-# Required for the machine learning model
-# Consider using TensorFlow Lite if only used for inference
-tensorflow>=2.6.0
-keras>=2.6.0
+# TensorFlow Lite for model inference
+# TensorFlow Lite is lighter than the full TensorFlow package
+tensorflow-lite>=2.6.0
 
 # Required for the web app
 streamlit>=0.85.0
@@ -26,5 +26,6 @@ Pillow>=8.0.0
 
 # Commented out as it's a machine learning utility library, not directly required for the app to function
 # scikit-learn>=0.24.2
+
 
 
