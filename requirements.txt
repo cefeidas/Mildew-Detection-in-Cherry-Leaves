@@ -11,9 +11,11 @@ streamlit==0.85.0
 # Image processing
 Pillow==8.0.0
 
+# Protocol Buffers - Downgraded to avoid compatibility issues
+protobuf<3.21.0
+
 # Commented out as they are not directly required for the app to function
 # altair>=4.0,<5
-# protobuf>=3.20
 # pandas=>1.1.2
 
 # Commented out as they are used primarily in Jupyter Notebooks for visualization and are not necessary for the app's functionality
@@ -23,6 +25,7 @@ Pillow==8.0.0
 
 # Commented out as it's a machine learning utility library, not directly required for the app to function
 # scikit-learn>=0.24.2
+
 
 
 
