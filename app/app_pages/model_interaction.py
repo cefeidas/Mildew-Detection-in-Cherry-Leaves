@@ -1,39 +1,29 @@
 import streamlit as st
-from PIL import Image
-import numpy as np
-from tensorflow.keras.models import load_model
-from tensorflow.keras.preprocessing.image import img_to_array
 
 def display_page(app):
     st.title("Model Interaction")
-    st.write("Interact with the cherry leaves mildew detection model.")
+    st.write("""
+    ## Interact with the Cherry Leaves Mildew Detection Model
 
-    uploaded_files = st.file_uploader("Drag and Drop or Click to Upload Cherry Leaf Images or a ZIP file", type=['jpg', 'zip'], accept_multiple_files=True)
+    We have developed a simple and user-friendly application that allows you to upload images of cherry leaves, either individually, in groups, or even as a ZIP file, to detect whether they are healthy or afflicted with powdery mildew.
 
-    if uploaded_files is not None:
-        for uploaded_file in uploaded_files:
-            # Read the image and convert it into a PIL object
-            image = Image.open(uploaded_file)
-            
-            # Resize the image to 50x50 pixels
-            image = image.resize((50, 50))
-            
-            # Convert the image to an array and normalize it
-            image = img_to_array(image) / 255.0
-            image = np.expand_dims(image, axis=0)  # Expand dimensions for the model
+    ### How to Use the Model:
+    1. Access our specialized Jupyter Notebook designed for image analysis.
+    2. Follow the instructions within the notebook to upload your cherry leaf images.
+    3. The notebook will process the images and provide you with predictions.
 
-            # Load the model
-            model = load_model('cherry_leaf_cnn_model.h5')
+    ### Get Started:
+    To begin interacting with the model and analyze your cherry leaf images, please click on the link below to access our Jupyter Notebook:
 
-            # Make the prediction
-            prediction = model.predict(image)
-            label = 'Healthy' if prediction < 0.5 else 'Powdery Mildew'
+    [Go to Jupyter Notebook for Cherry Leaves Analysis](<Link_to_your_Jupyter_Notebook>)
 
-            # Display the image and the prediction
-            st.image(image, caption='Uploaded Cherry Leaf', use_column_width=True)
-            st.write(f'Prediction: {label}')
-    else:
-        st.write("Please upload JPG images or a ZIP file.")
+    For the best experience, we recommend using a series of images that vary in appearance to see how our model performs across different scenarios.
+
+    _Please note: The application is designed for educational and demonstration purposes and should not be used for critical decision-making in agricultural practices._
+    """)
+
+    st.write("For any additional information or queries, feel free to reach out to us through our contact page.")
+
 
 
 

@@ -236,19 +236,57 @@ This 'black box' characteristic of CNNs implies that the model does not reveal w
   2. Re-run all cells and compare results to previous runs.
 - **Expected Result**: Results should be consistent across multiple runs.
 
-### Test Case 5: Visualization Effectiveness
-- **Objective**: Test the effectiveness and accuracy of data visualizations.
-- **Procedure**:
-  1. Review all plots and charts in the notebook.
-  2. Check for correct representation of data and clarity in conveying insights.
-- **Expected Result**: Visualizations should accurately represent data and aid in interpretation.
-
-### Test Case 6: Documentation and Comments
+### Test Case 5: Documentation and Comments
 - **Objective**: Ensure that the notebook is well-documented with clear explanations and comments.
 - **Procedure**:
   1. Read through the documentation and comments in the notebook.
   2. Check for clarity, completeness, and relevance.
 - **Expected Result**: The notebook should have comprehensive and clear documentation and comments.
+
+### **Multi-Page Dashboard Test Cases**
+
+#### Test Case 1: Page Navigation
+- **Objective**: Ensure seamless navigation between different pages of the dashboard.
+- **Procedure**:
+  1. Open the dashboard.
+  2. Click on each menu item to navigate to different pages.
+  3. Ensure that the correct page is displayed each time.
+- **Expected Result**: Each page should load correctly without errors.
+
+#### Test Case 2: Data Visualization Accuracy
+- **Objective**: Verify that all data visualizations display accurate and up-to-date information.
+- **Procedure**:
+  1. Navigate to each page containing data visualizations.
+  2. Cross-reference displayed data with known data sources for accuracy.
+- **Expected Result**: All charts and graphs accurately represent the data source.
+
+#### Test Case 3: Interactive Elements
+- **Objective**: Test all interactive elements like buttons, sliders, or dropdowns for functionality.
+- **Procedure**:
+  1. Identify all interactive elements on each page.
+  2. Interact with each element to ensure they are functional.
+- **Expected Result**: All interactive elements should work as intended.
+
+#### Test Case 4: Responsiveness and Layout Integrity
+- **Objective**: Ensure the dashboard is responsive and maintains layout integrity across different devices and browsers.
+- **Procedure**:
+  1. Open the dashboard in various browsers (Chrome, Firefox, Safari).
+  2. Resize the browser window and access the dashboard on different devices (desktop, tablet, mobile).
+- **Expected Result**: The dashboard should be responsive with consistent layout and functionality.
+
+#### Test Case 5: Error Handling
+- **Objective**: Test the dashboard's ability to handle errors gracefully.
+- **Procedure**:
+  1. Simulate common user errors (e.g., incomplete form submissions, broken links).
+  2. Observe the dashboard's response.
+- **Expected Result**: The dashboard should display appropriate error messages without crashing.
+
+#### Test Case 6: Data Loading and Performance
+- **Objective**: Ensure data loads efficiently and dashboard performance is optimal.
+- **Procedure**:
+  1. Monitor load times for pages and visualizations.
+  2. Check for any performance lags or delays.
+- **Expected Result**: Data should load within a reasonable time frame, and the dashboard should perform smoothly.
 
 ## Deployment
 A detailed guide to deploying the Streamlit dashboard on Heroku:
