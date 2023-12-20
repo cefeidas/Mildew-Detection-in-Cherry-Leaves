@@ -15,7 +15,7 @@ def display_page(app):
     ### Get Started:
     To begin interacting with the model and analyze your cherry leaf images, please click on the link below to access our Jupyter Notebook:
 
-    [Go to Jupyter Notebook for Cherry Leaves Analysis](<Link_to_your_Jupyter_Notebook>)
+    To launch the predictive model, follow the instructions in the README file.
 
     For the best experience, we recommend using a series of images that vary in appearance to see how our model performs across different scenarios.
 
