@@ -37,6 +37,25 @@ The interactive Mildew Detection Dashboard is hosted on Heroku, providing an eas
 
 No installation or setup is required to use the dashboard. It's designed to be user-friendly, allowing you to upload cherry leaf images and get instant predictions on their health status.
 
+#### Important Information for Full Application Functionality
+
+
+Due to version limitations on Heroku, we have opted to deploy a limited version of the application on the platform.
+
+To fully utilize the app, please follow these steps:
+- Uncomment all packages in the `requirements.txt` file.
+- Install the requirements using the following command:
+- pip install -r requirements.txt
+- Uncomment all the commented-out sections in the `model_interaction` page of the app.
+- Launch the application on Codeanywhere or another platform that supports more recent versions of Python and heavier versions of TensorFlow.
+- Navigate to the `model_interaction` page and drag your images onto the provided area.
+- Your images will be labeled accordingly!
+
+Please note that these steps are essential for achieving the full functionality and performance of the application.
+
+
+
+
 
 ### Jupyter Notebooks
 
