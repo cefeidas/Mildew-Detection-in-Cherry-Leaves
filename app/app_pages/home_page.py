@@ -21,7 +21,7 @@ def display_page(app):
 
     st.write(
         f"* For more information and to understand the dataset better, "
-        f"please read the [Project Details](link_to_project_details).")
+        f"please read the Readme file.")
 
     st.success(
         f"The project focuses on 2 primary objectives:\n"
