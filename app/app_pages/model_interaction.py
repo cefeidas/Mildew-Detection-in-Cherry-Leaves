@@ -1,4 +1,13 @@
 import streamlit as st
+from PIL import Image
+import numpy as np
+from tensorflow.keras.models import load_model
+from tensorflow.keras.preprocessing.image import img_to_array
+import zipfile
+import io
+
+# Load the model once at the beginning
+model = load_model('cherry_leaf_cnn_model.h5')
 
 def display_page(app):
     st.title("Model Interaction")
@@ -24,56 +33,42 @@ def display_page(app):
 
     st.write("For any additional information or queries, feel free to reach out to us through our contact page.")
 
-# import streamlit as st
-# from PIL import Image
-# import numpy as np
-# from tensorflow.keras.models import load_model
-# from tensorflow.keras.preprocessing.image import img_to_array
-# import zipfile
-# import io
+    uploaded_files = st.file_uploader("Drag and Drop or Click to Upload Cherry Leaf Images or a ZIP file", type=['jpg', 'zip'], accept_multiple_files=True)
 
-# # Load the model once at the beginning
-# model = load_model('cherry_leaf_cnn_model.h5')
+    if uploaded_files is not None:
+        for uploaded_file in uploaded_files:
+            if uploaded_file.name.endswith('.zip'):
+                # Process images inside a ZIP file
+                with zipfile.ZipFile(uploaded_file, 'r') as zip_ref:
+                    for file_name in zip_ref.namelist():
+                        image_data = zip_ref.read(file_name)
+                        process_and_display_image(image_data)
+            else:
+                # Process a single image
+                image_data = uploaded_file.getvalue()
+                process_and_display_image(image_data)
+    else:
+        st.write("Please upload JPG images or a ZIP file.")
 
-# def display_page(app):
-#     st.title("Model Interaction")
-#     st.write("Interact with the cherry leaves mildew detection model.")
+def process_and_display_image(image_data):
+    # Convert to PIL object
+    image = Image.open(io.BytesIO(image_data))
+    # Resize and prepare the image
+    image = prepare_image(image)
+    # Display image and prediction
+    st.image(image, caption='Uploaded Cherry Leaf', use_column_width=True)
+    predict_and_display(image)
 
-#     uploaded_files = st.file_uploader("Drag and Drop or Click to Upload Cherry Leaf Images or a ZIP file", type=['jpg', 'zip'], accept_multiple_files=True)
+def prepare_image(image):
+    image = image.resize((50, 50))
+    return img_to_array(image) / 255.0
 
-#     if uploaded_files is not None:
-#         for uploaded_file in uploaded_files:
-#             if uploaded_file.name.endswith('.zip'):
-#                 # Process images inside a ZIP file
-#                 with zipfile.ZipFile(uploaded_file, 'r') as zip_ref:
-#                     for file_name in zip_ref.namelist():
-#                         image_data = zip_ref.read(file_name)
-#                         process_and_display_image(image_data)
-#             else:
-#                 # Process a single image
-#                 image_data = uploaded_file.getvalue()
-#                 process_and_display_image(image_data)
-#     else:
-#         st.write("Please upload JPG images or a ZIP file.")
+def predict_and_display(image):
+    image = np.expand_dims(image, axis=0)
+    prediction = model.predict(image)
+    label = 'Healthy' if prediction < 0.5 else 'Powdery Mildew'
+    st.write(f'Prediction: {label}')
 
-# def process_and_display_image(image_data):
-#     # Convert to PIL object
-#     image = Image.open(io.BytesIO(image_data))
-#     # Resize and prepare the image
-#     image = prepare_image(image)
-#     # Display image and prediction
-#     st.image(image, caption='Uploaded Cherry Leaf', use_column_width=True)
-#     predict_and_display(image)
+# Call the display_page function from your main application
+display_page(app)
 
-# def prepare_image(image):
-#     image = image.resize((50, 50))
-#     return img_to_array(image) / 255.0
-
-# def predict_and_display(image):
-#     image = np.expand_dims(image, axis=0)
-#     prediction = model.predict(image)
-#     label = 'Healthy' if prediction < 0.5 else 'Powdery Mildew'
-#     st.write(f'Prediction: {label}')
-
-# # Call the display_page function from your main application
-# # display_page(app)
