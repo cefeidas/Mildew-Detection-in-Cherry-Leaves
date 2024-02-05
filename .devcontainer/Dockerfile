@@ -1,52 +1,30 @@
-FROM ubuntu:22.04
+# Uso de una imagen base de Python
+FROM python:3.8-slim
 
-ENV PYTHON_VERSION 3.8.12
+# Configurar el entorno sin interacción durante la construcción
 ENV DEBIAN_FRONTEND=noninteractive
-#Set of all dependencies needed for pyenv to work on Ubuntu
-RUN apt-get update \ 
-    && apt-get install -y --no-install-recommends make build-essential libssl-dev libpq-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget ca-certificates curl llvm libncurses5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev mecab-ipadic-utf8 git postgresql-client telnet unzip
 
-RUN curl https://cli-assets.heroku.com/install.sh | sh
+# Actualizar e instalar solo las dependencias necesarias
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Instalar Node.js para cualquier necesidad de frontend (si es necesario)
 RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - && apt-get install -y nodejs
 
-ARG USERNAME=codeany
-RUN useradd -ms /bin/bash $USERNAME
-USER $USERNAME
-WORKDIR /home/$USERNAME
+# Crear y cambiar al directorio de trabajo
+WORKDIR /app
 
-# Set-up necessary Env vars for PyEnv
-ENV PYENV_ROOT /home/$USERNAME/.pyenv
-ENV PATH $PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH
+# Copiar el modelo entrenado y los archivos de la aplicación al contenedor
+COPY . /app
 
-# Install pyenv
-RUN set -ex \
-    && curl https://pyenv.run | bash \
-    && pyenv update \
-    && pyenv install $PYTHON_VERSION \
-    && pyenv global $PYTHON_VERSION \
-    && pyenv rehash \
-    && python3 -m pip install --no-cache-dir --upgrade pip \
-    && python3 -m pip install --no-cache-dir --upgrade setuptools wheel virtualenv pipenv pylint rope flake8  mypy autopep8 pep8 pylama pydocstyle bandit notebook twine jupyter
+# Instalar las dependencias de Python
+RUN pip install --no-cache-dir --upgrade pip \
+ && pip install --no-cache-dir -r requirements.txt
 
-ENV PATH=$PATH:"/home/codeany/.local/bin"
+# (Opcional) Si tienes un script para configurar Heroku o hacer otras configuraciones
+# COPY ./build-assets/heroku_config.sh /app/heroku_config.sh
+# RUN chmod +x /app/heroku_config.sh && /app/heroku_config.sh
 
-RUN echo 'alias python=python3' >> ~/.bashrc && \
-    echo 'export PIP_USER=yes' >> ~/.bashrc && \
-    echo 'alias pip=pip3' >> ~/.bashrc && \
-    echo 'alias psql="psql mydb"' >>  ~/.bashrc
-
-COPY ./build-assets/heroku_config.sh /home/$USERNAME/.theia/heroku_config.sh
-RUN echo 'alias heroku_config=". $HOME/.theia/heroku_config.sh"' >> ~/.bashrc
-
-COPY ./build-assets/make_url.py /home/$USERNAME/.theia/make_url.py
-RUN echo 'alias make_url="python3 $HOME/.theia/make_url.py "' >> ~/.bashrc
-
-RUN mkdir -p /home/$USERNAME/.jupyter/custom
-COPY ./build-assets/jupyter_notebook_config.py /home/$USERNAME/.jupyter/jupyter_notebook_config.py
-
-COPY ./build-assets/custom.js /home/$USERNAME/.jupyter/custom/custom.js
-
-USER root
-RUN chown -R $USERNAME:$USERNAME /home/$USERNAME/.theia
-
-CMD ["tail", "-f", "/dev/null"]
+# Comando para ejecutar la aplicación Streamlit
+CMD ["streamlit", "run", "tu_app.py"]
