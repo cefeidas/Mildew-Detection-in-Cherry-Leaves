@@ -1,7 +1,7 @@
 steps:
   # Paso 1: Construir la imagen de Docker
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/mildew-detection-in-leaves/mildew-detector-api:$SHORT_SHA', '.']
+    args: ['build', '-t', 'gcr.io/mildew-detection-in-leaves/mildew-detector-api:$SHORT_SHA', '-f', '.devcontainer/Dockerfile', '.']
 
   # Paso 2: Desplegar a Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
