@@ -8,7 +8,7 @@ steps:
     entrypoint: gcloud
     args: ['run', 'deploy', 'mildew-detector-service',
            '--image', 'europe-docker.pkg.dev/mildew-detection-in-leaves/mildew-detection-in-cherry-leaves/mildew-detector-api:$SHORT_SHA',
-           '--region', 'europe',
+           '--region', 'europe-west1',
            '--platform', 'managed',
            '--allow-unauthenticated']
 
