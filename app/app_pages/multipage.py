@@ -26,4 +26,4 @@ class MultiPage:
             'Navigation', range(len(self.pages)),
             format_func=lambda index: self.pages[index]['title'])
         st.session_state.current_page = page_index
-        self.pages[st.session_state.current_page]['function'](self)
+        self.pages[st.session_state.current_page]['function']()
