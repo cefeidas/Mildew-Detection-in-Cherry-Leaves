@@ -69,6 +69,3 @@ def predict_and_display(image):
     label = 'Healthy' if prediction < 0.5 else 'Powdery Mildew'
     st.write(f'Prediction: {label}')
 
-# Call the display_page function from your main application
-display_page(app)
-
