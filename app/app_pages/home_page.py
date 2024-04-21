@@ -1,7 +1,7 @@
 import streamlit as st
 
 
-def display_page(app):
+def display_page():
     st.title("Cherry Leaves Mildew Detection App")
 
     st.write("### Quick Project Overview")

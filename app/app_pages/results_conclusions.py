@@ -1,6 +1,6 @@
 import streamlit as st
 
-def display_page(app):
+def display_page():
     st.title("Results and Conclusions")
     st.write("Explore outcomes and insights of the mildew project.")
 

@@ -9,7 +9,7 @@ import io
 # Load the model once at the beginning
 model = load_model('cherry_leaf_cnn_model.h5')
 
-def display_page(app):
+def display_page():
     st.title("Model Interaction")
     st.write("""
     ## Interact with the Cherry Leaves Mildew Detection Model
